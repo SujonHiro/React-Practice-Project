@@ -5,6 +5,18 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  flex-direction: column;
+  gap: 20px;
+}
+.wrapper button{
+  padding: 10px 20px;
+  background-color: #ff1515;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
 }
 .accordion {
   width: 500px;
