@@ -1,9 +1,9 @@
-
+import Accordian from "./components/Accordian/Accordian";
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      <Accordian />
     </div>
   );
 }
