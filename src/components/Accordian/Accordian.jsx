@@ -4,7 +4,7 @@ import data from "./data";
 import "./style.css";
 const Accordian = () => {
   const [selected, setSeleted] = useState(null);
-
+//handle to selected item
   const handleseletedItem = (getSeletedId) => {
     setSeleted(getSeletedId === selected ? null : getSeletedId);
   };
