@@ -2,57 +2,50 @@ import React, { useEffect, useState } from "react";
 
 const RandomColor = () => {
   const [typeOfColor, setTypeOfColor] = useState("hex");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#000000");
 
-  function RandomColorUtility(length) {
+  function randomColorUtility(length) {
     return Math.floor(Math.random() * length);
   }
-  const createRandomHexColor = () => {
-    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "F"];
+  const handleHexRandomColor = () => {
+    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
     let hexColor = "#";
-
     for (let i = 0; i < 6; i++) {
-      hexColor += hex[RandomColorUtility(hex.length)];
-      setColor(hexColor);
+      hexColor += hex[randomColorUtility(hex.length)];
     }
+    setColor(hexColor);
   };
-  const createRandomRgbColor = () => {
-    const r = RandomColorUtility(255);
-    const g = RandomColorUtility(255);
-    const b = RandomColorUtility(255);
-
-    setColor(`rgb(${r},${g},${b})`);
+  const handleRgbRandomColor = () => {
+    const r= randomColorUtility(255);
+    const g= randomColorUtility(255);
+    const b= randomColorUtility(255);
+   setColor(`rgb(${r},${g},${b})`);
   };
+  const copyColor=()=>{
+    navigator.clipboard.writeText(color)
+  }
 
-// eslint-disable-next-line 
-  useEffect(() => {
-    // eslint-disable-next-line 
-    if (typeOfColor === "rgb") createRandomRgbColor();
-    else createRandomHexColor();
-  }, [typeOfColor]);
-
+  useEffect(()=>{
+    if(typeOfColor==="rgb") handleRgbRandomColor();
+    else handleHexRandomColor();
+  },[typeOfColor])
   return (
-    <div style={{ width: "100vw", height: "100vh", backgroundColor: color }}>
+    <div style={{width:"100vw",height:"100vh",backgroundColor:color}}>
       <button onClick={() => setTypeOfColor("hex")}>Create Hex Color</button>
       <button onClick={() => setTypeOfColor("rgb")}>Create RGB Color</button>
       <button
         onClick={
-          typeOfColor === "hex" ? createRandomHexColor : createRandomRgbColor}
+          typeOfColor === "hex"
+            ? handleHexRandomColor
+            : handleRgbRandomColor
+        }
       >
         Create Random Color
       </button>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: "40px",
-          marginTop: "50px",
-          color: "white",
-        }}
-      >
-        <h4>{typeOfColor === "rgb" ? "RGB COLOR: " : "HEX COlOR: "}</h4>
-        <h4>{color}</h4>
+      <div style={{display:"flex",justifyContent:"center",alignItems:"center",color:"#ffffff",marginTop:"50px",fontSize:"20px"}}>
+        <h4>{typeOfColor==="rgb"?"RGB COLOR : ": "HEX COLOR : "}</h4>
+        <h5>{color}</h5>
+        <button style={{marginLeft:"10px"}} onClick={copyColor}>Copy Color</button>
       </div>
     </div>
   );
