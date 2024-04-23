@@ -39,6 +39,10 @@ const handlePrevious=()=>{
 const handleNext=()=>{
     setCurrentSlide(currentSlide===images.length-1?0:currentSlide+1)
 }
+
+setTimeout(()=>{
+    handleNext()
+},10000)
     return (
         <>
             <div className="container">
