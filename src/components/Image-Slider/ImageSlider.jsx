@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import { BsArrowLeftCircle,BsArrowRightCircle } from "react-icons/bs";
 import "./style.css";
 const ImageSlider = ({url,limit=5,page=1}) => {
-
     const [images,setImages]=useState([]);
     const [currentSlide,setCurrentSlide]=useState(0)
     const [errorMsg,setErrorMsg]=useState(null);
